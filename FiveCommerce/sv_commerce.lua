@@ -48,10 +48,10 @@ function SetPlayerPermission(source, perm)
     end
     DebugPrint("add_principal identifier."..GetPlayerIdentifier(source, 0).." group."..perm)
     ExecuteCommand("add_principal identifier."..GetPlayerIdentifier(source, 0).." group."..perm)
-	if PermissionList[s] == nil then
-		PermissionList[s] = {}
+	if PermissionList[source] == nil then
+		PermissionList[source] = {}
 	end
-    table.insert(PermissionList[s], SkuMapping[sku].ace)
+    table.insert(PermissionList[source], perm)
 end
 
 -- Primary handling function
