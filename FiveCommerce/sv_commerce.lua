@@ -74,9 +74,9 @@ end
 
 -- Client startup and cleanup actions
 
-RegisterNetEvent("Commerce:SetPermissions")
-AddEventHandler("Commerce:SetPermissions", function()
-	DebugPrint("Got SetPermissions from "..tostring(source))
+RegisterNetEvent("Commerce:Startup")
+AddEventHandler("Commerce:Startup", function()
+	DebugPrint("Got Startup from "..tostring(source))
     LoadAndHandleSkus(source)
 end)
 
