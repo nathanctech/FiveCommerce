@@ -1,0 +1,44 @@
+FiveCommerce
+===================
+
+
+SETUP
+===================
+
+Alter the SkuMapping table with the needed packages. Here is the example:
+
+local SkuMapping = {
+    ["pack1"] = { id=1, description="Vehicle Pack" },
+    ["pack2"] = { id=2, description="Vehicle Pack2" }
+}
+
+["pack1"]: The name of the package you're selling. Should be one word only and is typed with the /buy command. Needs to be formatted as shown.
+id: The id of the package from the Partner page in keymaster.
+description: Short description of the package. This is currently not used. Actual description on the buy screen is set by keymaster.
+
+USAGE
+===================
+
+To handle custom packages (for purchasing currency, for example) handle the event "Commerce:HandlePackage" and apply your logic.
+
+Example using ACE permissions:
+
+RegisterNetEvent("Commerce:HandlePackage")
+AddEventHandler("Commerce:HandlePackage", function(package)
+    if package_id == "pack1" then
+        SetPlayerPermission(source, "vip2")
+    elseif package_id == "pack2" then
+        SetPlayerPermission(source, "vip4")
+    end
+end)
+
+EXPORTS
+==================
+
+FiveCommerce exports "SetPlayerPermission" as a server function:
+
+SetPlayerPermission(playerSrc, aceName)
+- playerSrc: the player object
+- aceName: the permission to assign.
+
+When used, the script tracks permissions granted by the script and will remove them if the player drops later.
